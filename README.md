@@ -11,7 +11,7 @@ Potential gotchas:
   - The action doesn't support the default PR comment yet either
 
 
-```ylm
+```YAML
 name: "Run On PR Comment Action"
 on:
   issue_comment:

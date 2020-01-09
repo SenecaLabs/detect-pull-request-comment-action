@@ -21,7 +21,7 @@ async function run() {
     }
 
     const trigger_string = core.getInput("trigger_string");
-    const reaction = (core.getInput("reaction") as "+1") || "eyes";
+    const reaction = core.getInput("reaction") as "+1";
 
     if (!allowedCommentReactions.includes(reaction)) {
       core.setFailed(
