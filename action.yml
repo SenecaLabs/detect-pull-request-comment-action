@@ -2,8 +2,8 @@ name: "Pull Request Comment Trigger"
 description: 'Look for a "trigger_string" in a pull-request comment, so that later steps can know whether or not to run.'
 inputs:
   reaction:
-    description: 'The emoji "reaction" to put on the comment to indicate that the trigger was detected. For example, "rocket"'
-    required: false
+    description: 'The emoji "reaction" to put on the comment to indicate that the trigger was detected. For example, "rocket". Needs to be one of https://developer.github.com/v3/reactions/#reaction-types'
+    default: "eyes"
   trigger_string:
     description: 'The string to look for in pull-request descriptions and comments. For example "#build/android"'
     required: true
