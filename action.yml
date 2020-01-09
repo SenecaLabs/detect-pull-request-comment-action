@@ -1,0 +1,19 @@
+name: "Pull Request Comment Trigger"
+description: 'Look for a "trigger_string" in a pull-request comment, so that later steps can know whether or not to run.'
+inputs:
+  reaction:
+    description: 'The emoji "reaction" to put on the comment to indicate that the trigger was detected. For example, "rocket"'
+    required: false
+  trigger_string:
+    description: 'The string to look for in pull-request descriptions and comments. For example "#build/android"'
+    required: true
+outputs:
+  triggered:
+    description: the string 'true' if the trigger_string was found, otherwise the string 'false'
+  comment_body:
+    description: body of the comment that triggered this workflow
+  commit_sha:
+    description: latest commit of the pr that this comment was on
+runs:
+  using: "node12"
+  main: "lib/index.js"
