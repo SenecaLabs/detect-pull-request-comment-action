@@ -37,18 +37,22 @@ fi
 
 
 echo_info "Checking out new release branch"
-# git checkout -b release/$VERSION_NUMBER
+git checkout -b release/$VERSION_NUMBER
 
 echo_info "Removing .gitignore and building all assets"
-# rm .gitignore
-# yarn
-# yarn build
+rm .gitignore
+yarn
+yarn build
 
 echo_info "Commiting changes"
-# git add .
-# git commit -m "Release commit"
+git add .
+git commit -m "Release commit"
 
-echo_info "Tagging and pushing"
-# git tag "$VERSION_NUMBER"
-# git push origin --tags
-# git push --set-upstream origin release/$VERSION_NUMBER
+echo_info "Tagging and pushing release branch"
+git tag "$VERSION_NUMBER"
+git push origin --tags
+git push --set-upstream origin release/$VERSION_NUMBER
+
+
+echo_info "Taking you back to master"
+git checkout master
