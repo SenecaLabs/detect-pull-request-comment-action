@@ -33,7 +33,7 @@ jobs:
         if: steps.check.outputs.triggered == 'true'
       - run: "echo Body: ${{ steps.check.outputs.comment_body }}"
         if: steps.check.outputs.triggered == 'true'
-      - run: "echo Commit: ${{ steps.check.outputs.commit_sha }}"
+      - run: "echo Commit: ${{ steps.check.outputs.commit_sha }}" # last commit on the PR which triggered this flow (this will be different to ${{ event...commit_sha }}), which will be the last commit on the default branch, i.e. master)
         if: steps.check.outputs.triggered == 'true'
 ```
 
@@ -44,6 +44,6 @@ For github actions to work they need to have all files checked into the repo, th
 
 To update this action: 
 1) branch off `master`, make your change, get it reviewed and merged into master
-2) branch off `master` to a new `release-v<version_to_release>` branch
+2) checkout `master` 
 3) run `./release.sh v<version_to_release>`
 4) you will now be able to consume this action at `SenecaLabs/detect-pull-request-comment-action@v<version_to_release>`
