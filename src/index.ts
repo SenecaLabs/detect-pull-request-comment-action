@@ -54,8 +54,17 @@ async function run() {
     const { data: commitsOnPr } = await client.pulls.listCommits({
       owner,
       repo,
+      per_page: 100,
       pull_number: context.payload.issue!.number
     });
+
+    if (commitsOnPr.length >= 100) {
+      throw new Error(
+        `PR ${
+          context.payload.issue!.number
+        } has more than 100 commits, this action does not support that yet.`
+      );
+    }
 
     core.setOutput("triggered", "true");
     core.setOutput("comment_body", body);
